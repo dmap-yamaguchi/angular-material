@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -15,6 +15,9 @@ export class UserEditComponent implements OnInit {
 
   // FormBuilder用
   form: FormGroup;
+  get user_id(): AbstractControl { return this.form.get('user_id')!; }
+  get user_name(): AbstractControl { return this.form.get('user_name')!; }
+  get user_email(): AbstractControl { return this.form.get('user_email')!; }
 
   // ユーザー初期値
   user: User = { user_id: 0, user_name: '', user_email: '' };
@@ -30,9 +33,9 @@ export class UserEditComponent implements OnInit {
   ) {
     // FormGroup
     this.form = formBuilder.group({
-      user_id: '',
-      user_name: '',
-      email: '',
+      user_id: 'a',
+      user_name: 'b',
+      email: 'c',
     });
   }
 
@@ -62,5 +65,9 @@ export class UserEditComponent implements OnInit {
         this.dialogRef.close();
       }
     });
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 }
