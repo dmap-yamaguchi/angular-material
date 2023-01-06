@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './form/form.component';
+import { UserService } from './user/user.service';
 import { UserListComponent } from './user/user-list/user-list.component';
 
 @NgModule({
@@ -28,7 +29,9 @@ import { UserListComponent } from './user/user-list/user-list.component';
     MatIconModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [  // Serviceはここに追加？
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
