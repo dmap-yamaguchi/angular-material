@@ -1,12 +1,12 @@
 // ユーザークラスの作成
 export class User {
-    id: number;
-    name: string;
-    email: string;
+    user_id: number;
+    user_name: string;
+    user_email: string;
 
     constructor() {
-        this.id = 0;
-        this.name = '';
-        this.email = '';
+        this.user_id = 0;
+        this.user_name = '';
+        this.user_email = '';
     }
 }

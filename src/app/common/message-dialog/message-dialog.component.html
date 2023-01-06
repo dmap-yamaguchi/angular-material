@@ -1,0 +1,15 @@
+<div fxLayout="row" fxFlexFill fxLayoutAlign="space-between center">
+    <h4 mat-dialog-title>{{ title }}</h4>
+</div>
+
+<div mat-dialog-content>
+    <div fxLayout="column" fxFlexFill fxLayoutAlign="start stretch">
+        {{ message }}
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <div fxLayout="row" fxFlexFill fxLayoutAlign="end center" fxLayoutGap="20px">
+        <button mat-button color="primary" (click)="closeClick()">閉じる</button>
+    </div>
+</div>

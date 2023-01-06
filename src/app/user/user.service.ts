@@ -12,9 +12,9 @@ export class UserService {
   // コンストラクタ内でリストセット
   constructor() {
     this.users = [
-      { id: 1, name: 'user1', email: 'user1@sample' },
-      { id: 2, name: 'user2', email: 'user2@sample' },
-      { id: 3, name: 'user3', email: 'user3@sample' },
+      { user_id: 1, user_name: 'user1', user_email: 'user1@sample' },
+      { user_id: 2, user_name: 'user2', user_email: 'user2@sample' },
+      { user_id: 3, user_name: 'user3', user_email: 'user3@sample' },
     ];
   }
 
@@ -25,13 +25,13 @@ export class UserService {
 
   // getter with id
   getUser(id: number): User | undefined {
-    return this.users.find(user => user.id == id);
+    return this.users.find(user => user.user_id == id);
   }
 
   // setter（更新用）
   setUser(user: User): void {
     for (let i=0; i<this.users.length; i++) {
-      if (this.users[i].id == user.id) {
+      if (this.users[i].user_id == user.user_id) {
         this.users[i] = user;
       }
     }
