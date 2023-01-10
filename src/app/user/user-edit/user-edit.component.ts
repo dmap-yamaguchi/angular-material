@@ -5,6 +5,7 @@ import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { MessageDialogComponent } from 'src/app/common/message-dialog/message-dialog.component';
+import { MyCommonModule } from '../../common/common.module';
 
 @Component({
   selector: 'app-user-edit',
@@ -22,20 +23,25 @@ export class UserEditComponent implements OnInit {
   // ユーザー初期値
   user: User = { user_id: 0, user_name: '', user_email: '' };
 
+  // 前画面データ用変数
+  data: any;
+
   constructor(
     // ダイアログ表示のため？
     public  dialogRef: MatDialogRef<UserEditComponent>,
-    @Inject(MAT_DIALOG_DATA) public param: any,
+    @Inject(MAT_DIALOG_DATA) public param: any,   //ここで前画面からデータを受け取る
     // Material
     private dialog: MatDialog,
     private service:  UserService,
     private formBuilder: FormBuilder,
   ) {
+    // 前画面のデータ取得
+    this.data = MyCommonModule.deepCopy(param.data);
     // FormGroup
     this.form = formBuilder.group({
-      user_id: 'a',
-      user_name: 'b',
-      email: 'c',
+      user_id: this.data.user_id,
+      user_name: this.data.user_name,
+      user_email: this.data.user_email,
     });
   }
 
@@ -52,9 +58,9 @@ export class UserEditComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(MessageDialogComponent, {
-      width: '200px',
+      width: '100px',
       data: {
-        title: 'Confirm',
+        title: '確認',
         message: 'OK?',
       }
     });

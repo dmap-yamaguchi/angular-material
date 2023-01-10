@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
 
   // 編集ボタン
   updateData(form: any): void {
-    // formから値をセット
+    // 指定のユーザーデータをセット
     let user = {
       user_id:     form.user_id,
       user_name:   form.user_name,
@@ -46,6 +46,7 @@ export class UserListComponent implements OnInit {
       data: {
         title:    'USER_EDIT',
         message:  'mssage',
+        data:     user,   //ここで遷移先にデータを渡す
       },
     });
 
