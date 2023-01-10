@@ -1,10 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { User } from '../user';
 import { UserService } from '../user.service';
-import { MessageDialogComponent } from 'src/app/common/message-dialog/message-dialog.component';
 import { MyCommonModule } from '../../common/common.module';
 
 @Component({
@@ -26,26 +25,25 @@ export class UserEditComponent implements OnInit {
   // 前画面データ用変数
   data: any;
 
+  ngOnInit(): void {
+  }
+
   constructor(
     // ダイアログ表示のため？
     public  dialogRef: MatDialogRef<UserEditComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,   //ここで前画面からデータを受け取る
     // Material
-    private dialog: MatDialog,
     private service:  UserService,
     private formBuilder: FormBuilder,
   ) {
     // 前画面のデータ取得
     this.data = MyCommonModule.deepCopy(param.data);
-    // FormGroup
-    this.form = formBuilder.group({
+    // Formの初期値
+    this.form = this.formBuilder.group({
       user_id: this.data.user_id,
       user_name: this.data.user_name,
       user_email: this.data.user_email,
     });
-  }
-
-  ngOnInit(): void {
   }
 
   // 更新ボタン
@@ -54,7 +52,7 @@ export class UserEditComponent implements OnInit {
 
     if (ret) {
       // 更新時の値セット（HTML→TS）
-      this.user.user_id     = this.user_id!.value;
+      this.user.user_id     = this.user_id!.value;  //TODO: get user_id() とかで置き換え可能？
       this.user.user_name   = this.user_name!.value;
       this.user.user_email  = this.user_email!.value;
 
