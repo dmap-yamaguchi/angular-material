@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { UserEditComponent } from '../user-edit/user-edit.component';
+import { MessageDialogComponent } from 'src/app/common/message-dialog/message-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -49,10 +50,17 @@ export class UserListComponent implements OnInit {
         data:     user,   //ここで遷移先にデータを渡す
       },
     });
-
     // 編集ダイアログ閉じ
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
+        //ここにHTTPリクエスト？
+        let msgObj = { crud: 'update', data: result };
+        let dialogRef = this.dialog.open(
+          MessageDialogComponent, {
+            width: '100px',
+            disableClose: true,
+            data: msgObj,
+          });
       }
     });
   }

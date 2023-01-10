@@ -50,27 +50,16 @@ export class UserEditComponent implements OnInit {
 
   // 更新ボタン
   onSubmit(form: any): void {
-    // formから値をセット
-    let user = {
-      user_id:    form.user_id,
-      user_name:  form.user_name,
-      user_email: form.user_email,
-    };
+    // 更新時の値セット（HTML→TS）
+    this.user.user_id     = this.user_id!.value;
+    this.user.user_name   = this.user_name!.value;
+    this.user.user_email  = this.user_email!.value;
 
-    const dialogRef = this.dialog.open(MessageDialogComponent, {
-      width: '100px',
-      data: {
-        title: '確認',
-        message: 'OK?',
-      }
-    });
+    // 値の更新
+    this.service.setUser(this.user);
+    console.log(this.service.getUsers());
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.service.setUser(user);
-        this.dialogRef.close();
-      }
-    });
+    this.dialogRef.close();
   }
 
   closeDialog() {
