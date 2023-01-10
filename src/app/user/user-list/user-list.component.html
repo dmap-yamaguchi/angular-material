@@ -1,7 +1,7 @@
-<h1>USER_LIST</h1>
-
 <!-- ユーザー一覧 -->
-<div>
+<div fxLayout="column" fxLayoutAlign="space-around stretch">
+    <h1>USER_LIST</h1>
+    <button mat-raised-button color="primary" (click)="addData()">追加＋</button>
     <table mat-table [dataSource]="users" class="mat-elevetion-z8">
 
         <ng-container matColumnDef="id">

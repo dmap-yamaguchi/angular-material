@@ -6,6 +6,8 @@ import { UserService } from '../user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { MessageDialogComponent } from 'src/app/common/message-dialog/message-dialog.component';
+import { DialogRef } from '@angular/cdk/dialog';
+import { UserAddComponent } from '../user-add/user-add.component';
 
 @Component({
   selector: 'app-user-list',
@@ -31,6 +33,20 @@ export class UserListComponent implements OnInit {
     this.users = this.service.getUsers();
   }
 
+  // 追加ボタン
+  addData(): void {
+    // 追加ダイアログ表示
+    const dialogRef = this.dialog.open(UserAddComponent, {
+      width: '640px',
+      disableClose: true,
+      data: {
+        title:    'USER_ADD',
+        message:  'message',
+        data:     '',
+      }
+    });
+  }
+
   // 編集ボタン
   updateData(form: any): void {
     // 指定のユーザーデータをセット
@@ -49,19 +65,6 @@ export class UserListComponent implements OnInit {
         message:  'mssage',
         data:     user,   //ここで遷移先にデータを渡す
       },
-    });
-    // 編集ダイアログ閉じ
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        //ここにHTTPリクエスト？
-        let msgObj = { crud: 'update', data: result };
-        // let dialogRef = this.dialog.open(
-        //   MessageDialogComponent, {
-        //     width: '100px',
-        //     disableClose: true,
-        //     data: msgObj,
-        //   });
-      }
     });
   }
 }

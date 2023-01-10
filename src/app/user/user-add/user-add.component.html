@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>
+    <span>追加</span>
+</h1>
+
+<div mat-dialog-content [formGroup]="form">
+    <div fxLayout="column" fxFlexFill fxLayoutAlign="space-around stretch">
+        <mat-form-field floatLabel="always">
+            <mat-label>ID</mat-label>
+            <input matInput placeholder="ID" formControlName="user_id" required>
+            <mat-error *ngIf="user_id.hasError('required')">必須</mat-error>
+        </mat-form-field>
+
+        <!-- ここだけrowの指定がないと横並びになっちゃう -->
+        <div fxLayout="row" fxFlexFill fxLayoutAlign="start stretch">
+            <mat-form-field floatLabel="always">
+                <mat-label>名称</mat-label>
+                <input matInput placeholder="名称" formControlName="user_name" required>
+                <mat-error *ngIf="user_name.hasError('required')">必須</mat-error>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field floatLabel="always">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput placeholder="xxx@example.com" formControlName="user_email" required>
+            <mat-error *ngIf="user_name.hasError('required')">必須</mat-error>
+        </mat-form-field>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
+        <button mat-raised-button color="basic" (click)="closeDialog()" cdkFocusInitial>閉じる</button>
+        <button mat-raised-button color="primary" (click)="onSubmit(form)" [disabled]="form.invalid">追加</button>
+    </div>
+</div>
+
+

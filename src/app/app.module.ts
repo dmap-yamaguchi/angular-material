@@ -20,6 +20,7 @@ import { UserService } from './user/user.service';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { MessageDialogComponent } from './common/message-dialog/message-dialog.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MessageDialogComponent } from './common/message-dialog/message-dialog.c
     FormComponent,
     UserListComponent,
     UserEditComponent,
-    MessageDialogComponent
+    MessageDialogComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,11 @@ export class UserService {
     return this.users.find(user => user.user_id == id);
   }
 
+  // get last index + 1
+  getSequence(): number {
+    return this.users.slice(-1)[0].user_id + 1;   //ちゃんと連番になっている想定
+  }
+
   // setter（更新用）
   setUser(user: User): void {
     for (let i=0; i<this.users.length; i++) {
