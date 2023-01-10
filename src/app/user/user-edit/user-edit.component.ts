@@ -50,16 +50,20 @@ export class UserEditComponent implements OnInit {
 
   // 更新ボタン
   onSubmit(form: any): void {
-    // 更新時の値セット（HTML→TS）
-    this.user.user_id     = this.user_id!.value;
-    this.user.user_name   = this.user_name!.value;
-    this.user.user_email  = this.user_email!.value;
+    var ret = confirm("更新します\nよろし？");
 
-    // 値の更新
-    this.service.setUser(this.user);
-    console.log(this.service.getUsers());
+    if (ret) {
+      // 更新時の値セット（HTML→TS）
+      this.user.user_id     = this.user_id!.value;
+      this.user.user_name   = this.user_name!.value;
+      this.user.user_email  = this.user_email!.value;
 
-    this.dialogRef.close();
+      // 値の更新
+      this.service.setUser(this.user);
+      console.log(this.service.getUsers());
+
+      this.dialogRef.close();
+    }
   }
 
   closeDialog() {

@@ -55,12 +55,12 @@ export class UserListComponent implements OnInit {
       if(result) {
         //ここにHTTPリクエスト？
         let msgObj = { crud: 'update', data: result };
-        let dialogRef = this.dialog.open(
-          MessageDialogComponent, {
-            width: '100px',
-            disableClose: true,
-            data: msgObj,
-          });
+        // let dialogRef = this.dialog.open(
+        //   MessageDialogComponent, {
+        //     width: '100px',
+        //     disableClose: true,
+        //     data: msgObj,
+        //   });
       }
     });
   }
