@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
     .spacer {
         flex: 1;
     }
@@ -32,10 +32,9 @@
   .toolbar #youtube-logo:hover {
     opacity: 0.8;
   }
-</style>
+</style> -->
 
-<h1>HEADER</h1>
-<div class="toolbar" role="banner">
+<!-- <div class="toolbar" role="banner">
     <img
       width="40"
       alt="Angular Logo"
@@ -62,4 +61,37 @@
         <li><a routerLink="/users">USER_LIST</a></li>
         <li><a routerLink="/form">SAMPLE_FORM</a></li>
     </ul>
+</div> -->
+
+<!-- materialの方 -->
+<div fxLayout="column" fxLayoutAlign="space-around stretch">
+  <mat-toolbar color="primary">
+
+    <mat-drawer-container>
+      <button type="button" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-drawer-container>
+
+    <span>My App</span>
+    <span class="header-spacer"></span>
+    <button mat-raised-button>
+      <div *ngIf="!isLogined"><small>Sign in</small></div>
+      <div *ngIf="isLogined"><small>Sign out</small></div>
+    </button>
+  </mat-toolbar>
+
+  <!-- <mat-drawer-container> -->
+    <mat-drawer #drawer mode="side">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-nav-list>
+        <a mat-list-item routerLink=".">マイページ</a>
+        <a mat-list-item routerLink="/users">利用者一覧</a>
+        <a mat-list-item routerLink=".">よくある質問</a>
+        <a mat-list-item routerLink=".">設定</a>
+      </mat-nav-list>
+    </mat-drawer>
+  <!-- </mat-drawer-container> -->
 </div>

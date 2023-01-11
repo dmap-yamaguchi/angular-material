@@ -1,0 +1,8 @@
+.header-spacer {
+    /* 以下の一括指定
+        flex-grow:   1
+        flex-shrink: 1
+        flex-basis:  auto
+    */
+    flex: 1 1 auto;
+}
