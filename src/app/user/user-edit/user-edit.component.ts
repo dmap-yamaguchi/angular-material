@@ -15,7 +15,7 @@ export class UserEditComponent implements OnInit {
 
   // FormBuilder用
   form: FormGroup;
-  get user_id(): AbstractControl { return this.form.get('user_id')!; }
+  get user_id(): AbstractControl { return this.form.get('user_id')!; }  // FireStoreとかで使う？
   get user_name(): AbstractControl { return this.form.get('user_name')!; }
   get user_email(): AbstractControl { return this.form.get('user_email')!; }
 
@@ -52,7 +52,7 @@ export class UserEditComponent implements OnInit {
 
     if (ret) {
       // 更新時の値セット（HTML→TS）
-      this.user.user_id     = this.user_id!.value;  //TODO: get user_id() とかで置き換え可能？
+      this.user.user_id     = this.user_id!.value;
       this.user.user_name   = this.user_name!.value;
       this.user.user_email  = this.user_email!.value;
 
